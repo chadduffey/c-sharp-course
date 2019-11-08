@@ -42,6 +42,25 @@ namespace GradeBook
             return total / grades.Count;
         }
 
+        private char LetterGrade(double grade)
+        {
+            char lg;
+
+            if (grade >= 90) {
+                lg = 'A';
+            } else if (grade >= 80) {
+                lg = 'B';
+            } else if (grade >= 70) {
+                lg = 'C';
+            } else if (grade >= 60) {
+                lg = 'D';
+            } else {
+                lg = 'F';
+            }
+
+            return lg;
+        }
+
         public Statistics GetStatistics(){
 
             var result = new Statistics();
@@ -49,6 +68,8 @@ namespace GradeBook
             result.Average = Average();
             result.Low = lowGrade;
             result.High = highGrade;
+
+            result.LetterGrade = LetterGrade(result.Average);
 
             return result;
         }
