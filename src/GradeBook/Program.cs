@@ -9,8 +9,19 @@ namespace GradeBook
         {
             
             var book = new Book("Chads Book");
-            book.AddGrade(34.4);
-            book.AddGrade(80.1);
+            
+            while (true) 
+            {
+                Console.WriteLine("Enter a grade (or 'q' to Quit): ");
+                var input = Console.ReadLine();
+                if (input == "q") 
+                {
+                    break;
+                }
+                var grade = double.Parse(input);
+                book.AddGrade(grade);
+            }
+            
             var stats = book.GetStatistics();
             System.Console.WriteLine($"The highest is {stats.High}");
             System.Console.WriteLine($"The lowest is {stats.Low}");
