@@ -20,10 +20,17 @@ namespace GradeBook
             Name = name;
         }
 
-        public void AddGrade(double grade){
-            grades.Add(grade);
-            highGrade = Math.Max(grade, highGrade);
-            lowGrade = Math.Min(grade,lowGrade);
+        public void AddGrade(double grade)
+        {
+            if(grade <= 100 && grade >= 0)
+            {
+                grades.Add(grade);
+                highGrade = Math.Max(grade, highGrade);
+                lowGrade = Math.Min(grade,lowGrade);
+            } else {
+                throw new ArgumentException($"Invalid grade: {nameof(grade)}");
+            }    
+            
         }
 
         private double HighGrade(double grade){
