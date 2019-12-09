@@ -3,16 +3,32 @@ using System;
 
 namespace GradeBook
 {
-    public class Book
+    public class NamedObject
+    {
+        public NamedObject(string name)
+        {
+            Name = name;
+        }
+
+        public string Name
+        {
+            get;
+            set;
+        }
+    }
+    
+    public abstract class BookBase
+    {
+        public abstract void AddGrade(double grade);
+    }
+    public class Book : NamedObject
     {
         
         private List<double> grades;
-        public string Name;
         private double lowGrade;
         private double highGrade;
 
-
-        public Book(string name)
+        public Book(string name) : base(name)
         {
             grades = new List<double>();
             lowGrade = double.MaxValue;
